@@ -45,6 +45,6 @@ public class EnemyHealth : MonoBehaviour
     {
         //code for death animation
 
-        Destroy(this, deathAnimationTime);
+        Destroy(this.gameObject, deathAnimationTime);
     }
 }
