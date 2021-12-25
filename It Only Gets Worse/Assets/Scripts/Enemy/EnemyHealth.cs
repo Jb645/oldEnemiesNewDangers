@@ -7,7 +7,10 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
     private float deathAnimationTime;
+
+    [SerializeField]
     private int currentHealth;
+
     public Entity enemyEntity;
 
     private void Start()

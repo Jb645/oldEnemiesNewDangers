@@ -16,6 +16,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Awake()
     {
+        playerEntity = (Entity)Resources.Load("Scriptables/Player");
         maxHealth = playerEntity.maxHealth;
         healthBar = GetComponent<HealthBar>();
     }

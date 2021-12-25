@@ -476,7 +476,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 0
-  enemyEntity: {fileID: 11400000, guid: 8cc88b52c773e264daeabe81898fa176, type: 2}
+  currentHealth: 0
+  enemyEntity: {fileID: 11400000, guid: aaf22d0955a625445a1ab10fd8b9ca00, type: 2}
 --- !u!1 &1091287115
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,6 +776,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6563768888399146579, guid: 61f266d5117ba724484b97f2872d9ed0,
+        type: 3}
+      propertyPath: playerEntity
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61f266d5117ba724484b97f2872d9ed0, type: 3}
