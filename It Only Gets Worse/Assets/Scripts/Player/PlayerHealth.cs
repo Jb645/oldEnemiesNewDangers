@@ -12,17 +12,17 @@ public class PlayerHealth : MonoBehaviour
     private HealthBar healthBar;
 
     //set up the scriptable object
-    [SerializeField] private Entity playerEntity;
+    private Entity playerEntity;
 
     private void Awake()
     {
-        playerEntity = (Entity)Resources.Load("Scriptables/Player");
-        maxHealth = playerEntity.maxHealth;
         healthBar = GetComponent<HealthBar>();
     }
 
     private void Start()
     {
+        playerEntity = (Entity)Resources.Load("Scriptables/Player");
+        maxHealth = playerEntity.maxHealth;
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
@@ -36,7 +36,8 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private void TakeDamage(int damage)
+    //made take damage public
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         healthBar.setHealth(currentHealth);

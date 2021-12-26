@@ -11,12 +11,16 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField]
     private int currentHealth;
 
+    private int damage;
+
     public Entity enemyEntity;
 
     private void Start()
     {
         maxHealth = enemyEntity.maxHealth;
         currentHealth = maxHealth;
+
+        damage = enemyEntity.damage;
 
         deathAnimationTime = enemyEntity.DAT;
     }
@@ -49,5 +53,19 @@ public class EnemyHealth : MonoBehaviour
         //code for death animation
 
         Destroy(this.gameObject, deathAnimationTime);
+    }
+
+    //just added everything under--
+
+    private void OnTriggerEnter(Collider player)
+    {
+        if (!player.CompareTag("Player")) return;
+
+        dealDamage(player);
+    }
+
+    private void dealDamage(Collider player)
+    {
+        player.GetComponent<PlayerHealth>().TakeDamage(damage);
     }
 }
