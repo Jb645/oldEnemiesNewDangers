@@ -20,4 +20,6 @@ public class Entity : ScriptableObject
     [Header("-Animation-")]
     [Tooltip("Death Animation Time, how long does the death animation take?")]
     public float DAT;
+
+    public int num;
 }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b56409eee05ed864eb81ccff3e7116d9, type: 3}
-  m_Name: Basic Enemy
+  m_Name: BasicEnemy
   m_EditorClassIdentifier: 
   name: Basic Enemy
   type: Basic
@@ -18,3 +18,5 @@ MonoBehaviour:
   maxHealth: 100
   speed_walking: 10
   speed_running: 20
+  DAT: 0
+  num: 1

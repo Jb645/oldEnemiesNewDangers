@@ -28,18 +28,9 @@ public class EnemyHealth : MonoBehaviour
     private void Update()
     {
         //testing
-        Testing();
     }
 
-    private void Testing()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            takeDamage(10);
-        }
-    }
-
-    private void takeDamage(int damage)
+    public void takeDamage(int damage)
     {
         currentHealth -= damage;
         if (currentHealth <= 0)
@@ -64,7 +55,7 @@ public class EnemyHealth : MonoBehaviour
         dealDamage(player);
     }
 
-    private void dealDamage(Collider player)
+    public void dealDamage(Collider player)
     {
         player.GetComponent<PlayerHealth>().TakeDamage(damage);
     }
