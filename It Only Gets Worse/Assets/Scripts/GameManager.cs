@@ -3,29 +3,47 @@
 public class GameManager : MonoBehaviour
 {
     [Header("Target")]
-    [SerializeField] GameObject targetObject;
+    [SerializeField] private GameObject targetObject;
 
     [Header("Instantiate Enemy")]
-    [SerializeField] GameObject enemyPrefab;
-    [SerializeField] Transform enemyParent;
+    [SerializeField] private GameObject enemyPrefab;
+
+    [SerializeField] private Transform enemyParent;
 
     [Header("Instantiate Boss")]
-    [SerializeField] GameObject bossPrefab;
-    [SerializeField] Transform bossParent;
+    [SerializeField] private GameObject bossPrefab;
+
+    [SerializeField] private Transform bossParent;
 
     [Header("Enemy Settings")]
-    [SerializeField] int enemiesToSpawn;
+    [SerializeField] private int enemiesToSpawn;
 
     [Header("Boss Settings")]
-    [SerializeField] int bossesToSpawn;
+    [SerializeField] private int bossesToSpawn;
+
+    private Entity basicEnemy;
+    private Entity bossEnemy;
+
+    private void Awake()
+    {
+        basicEnemy = (Entity)Resources.Load("Scriptables/BasicEnemy");
+        bossEnemy = (Entity)Resources.Load("Scriptables/BossEnemy");
+    }
 
     private void Start()
     {
+        SetUpEnemy();
         SpawnEnemies();
         SpawnBosses();
     }
 
-    void SpawnEnemies()
+    private void SetUpEnemy()
+    {
+        enemiesToSpawn = basicEnemy.num;
+        bossesToSpawn = bossEnemy.num;
+    }
+
+    private void SpawnEnemies()
     {
         //spawn enemies
         for (int i = 0; i < enemiesToSpawn; i++)
@@ -38,7 +56,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void SpawnBosses()
+    private void SpawnBosses()
     {
         //spawn boss
         for (int i = 0; i < bossesToSpawn; i++)

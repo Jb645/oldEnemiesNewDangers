@@ -121,9 +121,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1671744390541810387}
   - component: {fileID: 1671744390541810386}
-  - component: {fileID: 1671744390541810384}
+  - component: {fileID: 807491879216370054}
+  - component: {fileID: 3282759606240118836}
   m_Layer: 0
-  m_Name: BasicEnemy
+  m_Name: BossEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -137,8 +138,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1671744390541810397}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.907147, y: 0, z: 63.59677}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 3.7482738, y: 0, z: 91.952095}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1671744390182600473}
   m_Father: {fileID: 0}
@@ -154,10 +155,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
-  m_Acceleration: 15
+  m_Speed: 3
+  m_Acceleration: 10
   avoidancePriority: 50
-  m_AngularSpeed: 180
+  m_AngularSpeed: 130
   m_StoppingDistance: 0.1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -166,7 +167,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1671744390541810384
+--- !u!114 &807491879216370054
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,9 +176,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1671744390541810397}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b7c2e250fa9f4ad8ae980ba726cadb6, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e87c367ae68543959e5ae472a5afe25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerToChase: {fileID: 0}
   navMesh: {fileID: 1671744390541810386}
   distance: 0
+--- !u!114 &3282759606240118836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671744390541810397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efd387d920984e442bc0b119240f3e22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  enemyEntity: {fileID: 11400000, guid: aaf22d0955a625445a1ab10fd8b9ca00, type: 2}
