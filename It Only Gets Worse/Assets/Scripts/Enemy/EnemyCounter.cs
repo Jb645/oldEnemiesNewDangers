@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class EnemyCounter : MonoBehaviour
 {
-    private static int EnemiesNum;
+    [SerializeField] private static int EnemiesNum;
 
     private Entity basicEnemy, bossEnemy;
     private PointTracker point;
 
-    private void Awake()
+    private void Start()
     {
         basicEnemy = ScriptableTags.basicEnemyEntity;
         bossEnemy = ScriptableTags.bossEnemyEntity;

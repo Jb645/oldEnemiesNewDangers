@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
         //spawn enemies
         for (int i = 0; i < enemiesToSpawn; i++)
         {
-            enemyPrefab.transform.position = new Vector3(Random.Range(0f, 100f), 0f, Random.Range(0f, 100f));
+            enemyPrefab.transform.position = new Vector3(Random.Range(0f, 100f), 2f, Random.Range(0f, 100f));
             GameObject newEnemy = Instantiate(enemyPrefab, enemyParent);
 
             EnemyController enemyController = newEnemy.GetComponent<EnemyController>();

@@ -20,9 +20,11 @@ public class PointManager : MonoBehaviour
         basicEnemy = ScriptableTags.basicEnemyEntity;
         bossEnemy = ScriptableTags.bossEnemyEntity;
         point = ScriptableTags.pointTracker;
-
-        SetTextValues();
-        CheckToSetBossActive();
+        if (SceneManager.GetActiveScene().name == SceneTags.Intro)
+        {
+            SetTextValues();
+            CheckToSetBossActive();
+        }
     }
 
     private void SetTextValues()

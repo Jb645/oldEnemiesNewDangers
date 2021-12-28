@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField]
-    private int maxHealth;
-
     private int currentHealth;
 
     private HealthBar healthBar;
 
     //set up the scriptable object
     private Entity playerEntity;
+
+    private int maxHealth;
 
     private void Awake()
     {
@@ -52,5 +52,6 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth += healAmount;
         healthBar.setHealth(currentHealth);
+        //Debug.Log("player took damage");
     }
 }

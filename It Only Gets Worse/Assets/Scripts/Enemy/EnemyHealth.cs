@@ -6,6 +6,16 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
+
+    //animaton script
+    [SerializeField] private EnemyAnimation enemyAnimation;
+
+    //enemy controller
+    [SerializeField] private EnemyController enemyController;
+
+    //enemy health bar
+    [SerializeField] private EnemyHealthBar enemyHealthBar;
+
     private float deathAnimationTime;
 
     [SerializeField]
@@ -25,7 +35,7 @@ public class EnemyHealth : MonoBehaviour
 
         deathAnimationTime = enemyEntity.DAT;
 
-        points = (PointTracker)Resources.Load("Scriptables/Point");
+        points = ScriptableTags.pointTracker;
     }
 
     private void Update()
@@ -36,6 +46,11 @@ public class EnemyHealth : MonoBehaviour
     public void takeDamage(int damage)
     {
         currentHealth -= damage;
+        if (enemyHealthBar != null)
+        {
+            enemyHealthBar.healthSlider.value -= damage;
+        }
+
         if (currentHealth <= 0)
         {
             Die();
@@ -56,8 +71,28 @@ public class EnemyHealth : MonoBehaviour
         }
 
         EnemyCounter.OnEnemyDeath();
+        //stops the enemy
+
+        if (enemyController != null) //checks if they exist
+        {
+            enemyController.enabled = false;
+            enemyAnimation.SetDie();
+        }
+
         Destroy(this.gameObject, deathAnimationTime);
     }
 
     //just added everything under--
+
+    private void OnTriggerEnter(Collider player)
+    {
+        if (!player.CompareTag("Player")) return;
+        dealDamage(player);
+    }
+
+    public void dealDamage(Collider player)
+    {
+        Debug.Log("called");
+        player.GetComponent<PlayerHealth>().TakeDamage(damage);
+    }
 }

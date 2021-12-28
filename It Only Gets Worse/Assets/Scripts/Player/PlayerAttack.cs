@@ -44,11 +44,15 @@ public class PlayerAttack : MonoBehaviour
 
         if (Physics.Raycast(mainCam.transform.position, mainCam.transform.forward, out hit))
         {
-            EnemyHealth enemyHealth = hit.transform.gameObject.GetComponentInParent<EnemyHealth>();
+            if (hit.transform.name == "Terrain") return;
+            EnemyHealth enemyHealth = hit.transform.gameObject.GetComponent<EnemyHealth>();
             if (enemyHealth != null)
             {
                 enemyHealth.takeDamage(10);
+                Debug.Log("Took damage");
             }
+
+            Debug.Log(hit.transform.name);
         }
     }
 }
