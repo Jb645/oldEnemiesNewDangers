@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,12 +8,31 @@ public class PointManager : MonoBehaviour
 {
     private Entity basicEnemy, bossEnemy;
     private PointTracker point;
+    private static bool bossUnlocked, bossStatsUnlocked;
+
+    [SerializeField]
+    private DisplayCost[] costTextArray;
+
+    private int[] costs;
 
     private void Awake()
     {
-        basicEnemy = (Entity)Resources.Load("Scriptables/BasicEnemy");
-        bossEnemy = (Entity)Resources.Load("Scriptables/BossEnemy");
-        point = (PointTracker)Resources.Load("Scriptables/Point");
+        basicEnemy = ScriptableTags.basicEnemyEntity;
+        bossEnemy = ScriptableTags.bossEnemyEntity;
+        point = ScriptableTags.pointTracker;
+
+        SetTextValues();
+        CheckToSetBossActive();
+    }
+
+    private void SetTextValues()
+    {
+        costTextArray[0].setCostText(point.basicEnemyNumCost);
+        costTextArray[1].setCostText(point.basicEnemyDamageCost);
+        costTextArray[2].setCostText(point.basicEnemyMaxHealthCost);
+        costTextArray[3].setCostText(point.bossEnemyNumCost);
+        costTextArray[4].setCostText(point.bossEnemyDamageCost);
+        costTextArray[5].setCostText(point.bossEnemyMaxHealthCost);
     }
 
     public void BuyUgrade(string upgradeType)
@@ -20,28 +40,30 @@ public class PointManager : MonoBehaviour
         switch (upgradeType)
         {
             case "basicNum":
-
-                costCheck(ref basicEnemy.num, 1, point.basicEnemyNumCost);
+                costCheck(ref basicEnemy.num, 1, ref point.basicEnemyNumCost, 0);
                 break;
 
             case "basicDamage":
-                costCheck(ref basicEnemy.damage, 10, point.basicEnemyDamageCost);
+                costCheck(ref basicEnemy.damage, 10, ref point.basicEnemyDamageCost, 1);
                 break;
 
             case "basicMaxHealth":
-                costCheck(ref basicEnemy.maxHealth, 50, point.basicEnemyMaxHealthCost);
+                costCheck(ref basicEnemy.maxHealth, 50, ref point.basicEnemyMaxHealthCost, 2);
                 break;
 
             case "bossNum":
-                costCheck(ref bossEnemy.num, 1, point.bossEnemyNumCost);
+                if (bossUnlocked)
+                    costCheck(ref bossEnemy.num, 1, ref point.bossEnemyNumCost, 3);
                 break;
 
             case "BossDamage":
-                costCheck(ref bossEnemy.damage, 20, point.bossEnemyDamageCost);
+                if (bossStatsUnlocked)
+                    costCheck(ref bossEnemy.damage, 20, ref point.bossEnemyDamageCost, 4);
                 break;
 
             case "bossMaxHealth":
-                costCheck(ref bossEnemy.maxHealth, 100, point.bossEnemyMaxHealthCost);
+                if (bossStatsUnlocked)
+                    costCheck(ref bossEnemy.maxHealth, 100, ref point.bossEnemyMaxHealthCost, 5);
                 break;
 
             default:
@@ -50,13 +72,16 @@ public class PointManager : MonoBehaviour
         }
     }
 
-    private void costCheck(ref int valueIncreased, int increase, int cost)
+    private void costCheck(ref int valueIncreased, int increase, ref int cost, int index)
     {
         if (point.currentPoints > cost)
         {
             Debug.Log($"Bought something");
             valueIncreased += increase;
             point.currentPoints -= cost;
+            cost = (int)Mathf.Floor(cost * 1.5f);
+            costTextArray[index].setCostText(cost);
+            CheckToSetBossActive();
         }
         else
         {
@@ -67,6 +92,29 @@ public class PointManager : MonoBehaviour
 
     public void SwitchScene()
     {
-        SceneManager.LoadScene("Scenes/Game");
+        SceneManager.LoadScene(SceneTags.Game);
+    }
+
+    private void CheckToSetBossActive()
+    {
+        if (basicEnemy.num >= 5) //if num of basic enemies >=5 unlock bossses
+        {
+            bossUnlocked = true;
+        }
+        SetActiveBosses(3, bossUnlocked); //posible errors
+
+        if (bossEnemy.num > 0) //if number of bosses >0 unlock their stats
+        {
+            bossStatsUnlocked = true;
+        }
+        SetActiveBosses(4, bossStatsUnlocked);
+    }
+
+    private void SetActiveBosses(int start, bool action)
+    {
+        for (int i = start; i < costTextArray.Length; i++)
+        {
+            costTextArray[i].gameObject.SetActive(action);
+        }
     }
 }

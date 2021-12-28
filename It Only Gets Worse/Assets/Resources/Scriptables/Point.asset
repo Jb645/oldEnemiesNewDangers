@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 523c99ceb66800144a9be26cef2380ed, type: 3}
   m_Name: Point
   m_EditorClassIdentifier: 
-  currentPoints: 100
+  currentPoints: 0
   basicEnemyKill: 10
-  basicEnemyDamageCost: 5
-  basicEnemyMaxHealthCost: 5
+  basicEnemyDamageCost: 10
+  basicEnemyMaxHealthCost: 10
   basicEnemyNumCost: 20
   bossEnemyKill: 100
-  bossEnemyNumCost: 50
-  bossEnemyDamageCost: 50
+  bossEnemyNumCost: 200
+  bossEnemyDamageCost: 100
   bossEnemyMaxHealthCost: 100
