@@ -7,10 +7,15 @@ public class PlayerAttack : MonoBehaviour
 {
     private Camera mainCam;
     private GameObject crosshair;
+    private float nextTimeToFire;
+    private float fireRate = 15f;
+
+    private WeaponManager weaponManager;
 
     private void Awake()
     {
         mainCam = Camera.main;
+        weaponManager = GetComponentInChildren<WeaponManager>();
     }
 
     private void Update()
@@ -20,9 +25,16 @@ public class PlayerAttack : MonoBehaviour
 
     private void WeaponShoot()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0) && Time.time > nextTimeToFire)
         {
+            nextTimeToFire = Time.time + 1f / fireRate;
+
+            weaponManager.shootAnimation();
             BulletFired();
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            weaponManager.stopShooting();
         }
     }
 
