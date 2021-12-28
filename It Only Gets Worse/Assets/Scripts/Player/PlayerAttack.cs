@@ -36,7 +36,10 @@ public class PlayerAttack : MonoBehaviour
             if (enemyHealth != null)
             {
                 enemyHealth.takeDamage(10);
+                Debug.Log("Took damage");
             }
+
+            Debug.Log(hit.transform.name);
         }
     }
 }

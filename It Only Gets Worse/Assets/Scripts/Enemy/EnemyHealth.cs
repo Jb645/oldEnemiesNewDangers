@@ -6,6 +6,12 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
+    //animaton script
+    [SerializeField] EnemyAnimation enemyAnimation;
+    //enemy controller
+    [SerializeField] EnemyController enemyController;
+    //enemy health bar
+    [SerializeField] EnemyHealthBar enemyHealthBar;
     private float deathAnimationTime;
 
     [SerializeField]
@@ -33,6 +39,7 @@ public class EnemyHealth : MonoBehaviour
     public void takeDamage(int damage)
     {
         currentHealth -= damage;
+        enemyHealthBar.healthSlider.value -= damage;
         if (currentHealth <= 0)
         {
             Die();
@@ -42,7 +49,9 @@ public class EnemyHealth : MonoBehaviour
     private void Die()
     {
         //code for death animation
-
+        //stops the enemy
+        enemyController.enabled = false;
+        enemyAnimation.SetDie();
         Destroy(this.gameObject, deathAnimationTime);
     }
 
@@ -50,13 +59,20 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnTriggerEnter(Collider player)
     {
-        if (!player.CompareTag("Player")) return;
-
-        dealDamage(player);
+        if (player.CompareTag("Player"))
+        {
+            //return;
+            dealDamage(player);
+        }
+        else
+        {
+            
+        }
     }
 
     public void dealDamage(Collider player)
     {
+        Debug.Log("called");
         player.GetComponent<PlayerHealth>().TakeDamage(damage);
     }
 }

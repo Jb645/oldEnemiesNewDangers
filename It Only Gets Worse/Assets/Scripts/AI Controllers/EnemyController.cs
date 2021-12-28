@@ -7,15 +7,19 @@ public class EnemyController : MonoBehaviour
     public NavMeshAgent navMesh;
 
     public float distance;
+    public bool isMoving = true;
 
     private void FixedUpdate()
     {
         navMesh.SetDestination(playerToChase.position);
         distance = Vector3.Distance(navMesh.transform.position, playerToChase.position);
+    }
 
-        if (distance <= 1.2f)
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
         {
-            //Debug.Log("Game over by basic enemy", gameObject);
+            isMoving = false;
         }
     }
 }
