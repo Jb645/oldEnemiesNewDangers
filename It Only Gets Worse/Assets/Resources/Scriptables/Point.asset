@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 523c99ceb66800144a9be26cef2380ed, type: 3}
   m_Name: Point
   m_EditorClassIdentifier: 
-  currentPoints: 100
+  currentPoints: 10
   basicEnemyKill: 10
   basicEnemyDamageCost: 5
   basicEnemyMaxHealthCost: 5

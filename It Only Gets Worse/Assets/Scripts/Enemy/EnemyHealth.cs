@@ -14,6 +14,7 @@ public class EnemyHealth : MonoBehaviour
     private int damage;
 
     public Entity enemyEntity;
+    private PointTracker points;
 
     private void Start()
     {
@@ -23,6 +24,8 @@ public class EnemyHealth : MonoBehaviour
         damage = enemyEntity.damage;
 
         deathAnimationTime = enemyEntity.DAT;
+
+        points = (PointTracker)Resources.Load("Scriptables/Point");
     }
 
     private void Update()
@@ -43,20 +46,18 @@ public class EnemyHealth : MonoBehaviour
     {
         //code for death animation
 
+        if (enemyEntity.type == "Basic")
+        {
+            points.currentPoints += 10; //will change later
+        }
+        else if (enemyEntity.type == "Boss")
+        {
+            points.currentPoints += 100; //will change later
+        }
+
+        EnemyCounter.OnEnemyDeath();
         Destroy(this.gameObject, deathAnimationTime);
     }
 
     //just added everything under--
-
-    private void OnTriggerEnter(Collider player)
-    {
-        if (!player.CompareTag("Player")) return;
-
-        dealDamage(player);
-    }
-
-    public void dealDamage(Collider player)
-    {
-        player.GetComponent<PlayerHealth>().TakeDamage(damage);
-    }
 }

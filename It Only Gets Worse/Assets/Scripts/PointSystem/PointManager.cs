@@ -56,6 +56,7 @@ public class PointManager : MonoBehaviour
         {
             Debug.Log($"Bought something");
             valueIncreased += increase;
+            point.currentPoints -= cost;
         }
         else
         {

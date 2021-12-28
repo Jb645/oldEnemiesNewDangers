@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1671744390182600478}
   - component: {fileID: 1276401396913885277}
   - component: {fileID: 2310534609297873771}
+  - component: {fileID: 8788057983777751652}
   m_Layer: 0
   m_Name: Capsule Mesh
   m_TagString: Untagged
@@ -111,6 +112,20 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8788057983777751652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671744390182600472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c7f11e92f7d3284fbfdad72685afb4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitRate: 15
+  enemyType: {fileID: 11400000, guid: aaf22d0955a625445a1ab10fd8b9ca00, type: 2}
 --- !u!1 &1671744390541810397
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,3 +212,4 @@ MonoBehaviour:
   maxHealth: 0
   currentHealth: 0
   enemyEntity: {fileID: 11400000, guid: aaf22d0955a625445a1ab10fd8b9ca00, type: 2}
+  points: {fileID: 11400000, guid: 850a6846a7fa5984c9db38ed25e35170, type: 2}
