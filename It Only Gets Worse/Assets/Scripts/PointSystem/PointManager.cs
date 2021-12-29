@@ -8,7 +8,7 @@ public class PointManager : MonoBehaviour
 {
     private Entity basicEnemy, bossEnemy;
     private PointTracker point;
-    private static bool bossUnlocked, bossStatsUnlocked;
+    private bool bossUnlocked, bossStatsUnlocked;
 
     [SerializeField]
     private DisplayCost[] costTextArray;
@@ -20,6 +20,10 @@ public class PointManager : MonoBehaviour
         basicEnemy = ScriptableTags.basicEnemyEntity;
         bossEnemy = ScriptableTags.bossEnemyEntity;
         point = ScriptableTags.pointTracker;
+    }
+
+    private void Start()
+    {
         if (SceneManager.GetActiveScene().name == SceneTags.Intro)
         {
             SetTextValues();
@@ -100,20 +104,20 @@ public class PointManager : MonoBehaviour
     private void CheckToSetBossActive()
     {
         if (basicEnemy.num >= 5) //if num of basic enemies >=5 unlock bossses
-        {
             bossUnlocked = true;
-        }
+        else bossUnlocked = false;
+
         SetActiveBosses(3, bossUnlocked); //posible errors
 
-        if (bossEnemy.num > 0) //if number of bosses >0 unlock their stats
-        {
+        if (bossEnemy.num > 0 && bossUnlocked) //if number of bosses >0 unlock their stats
             bossStatsUnlocked = true;
-        }
+        else bossStatsUnlocked = false;
         SetActiveBosses(4, bossStatsUnlocked);
     }
 
     private void SetActiveBosses(int start, bool action)
     {
+        Debug.Log(action);
         for (int i = start; i < costTextArray.Length; i++)
         {
             costTextArray[i].gameObject.SetActive(action);

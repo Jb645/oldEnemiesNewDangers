@@ -18,6 +18,6 @@ MonoBehaviour:
   basicEnemyMaxHealthCost: 10
   basicEnemyNumCost: 20
   bossEnemyKill: 100
-  bossEnemyNumCost: 200
+  bossEnemyNumCost: 300
   bossEnemyDamageCost: 100
   bossEnemyMaxHealthCost: 100
