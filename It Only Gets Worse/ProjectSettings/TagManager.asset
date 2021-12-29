@@ -10,6 +10,7 @@ TagManager:
   - Upgrades
   - PointManager
   - Enemy
+  - Terrain
   layers:
   - Default
   - TransparentFX

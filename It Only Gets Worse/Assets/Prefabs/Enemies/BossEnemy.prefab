@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 6240105178689494948}
   m_Layer: 0
   m_Name: Capsule Mesh
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 807491879216370054}
   m_Layer: 0
   m_Name: BossEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -269,7 +269,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1671744390541810397}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 93.01555, y: 0, z: 14.84828}
+  m_LocalPosition: {x: 4.988599, y: 0, z: 18.588066}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1671744390182600473}

@@ -19,4 +19,4 @@ MonoBehaviour:
   speed_walking: 5
   speed_running: 10
   DAT: 0
-  num: 0
+  num: 1
