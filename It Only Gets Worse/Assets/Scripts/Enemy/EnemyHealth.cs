@@ -79,7 +79,14 @@ public class EnemyHealth : MonoBehaviour
             enemyAnimation.SetDie();
         }
 
-        Destroy(this.gameObject, deathAnimationTime);
+        if (this.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(this.gameObject, deathAnimationTime);
+        }
+        else //for basic
+        {
+            Destroy(this.transform.parent.parent.gameObject, deathAnimationTime);
+        }
     }
 
     //just added everything under--

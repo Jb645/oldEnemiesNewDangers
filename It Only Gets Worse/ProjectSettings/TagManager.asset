@@ -9,6 +9,7 @@ TagManager:
   - crosshair
   - Upgrades
   - PointManager
+  - Enemy
   layers:
   - Default
   - TransparentFX
