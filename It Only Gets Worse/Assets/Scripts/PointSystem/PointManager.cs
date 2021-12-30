@@ -24,7 +24,7 @@ public class PointManager : MonoBehaviour
 
     private void Start()
     {
-        if (SceneManager.GetActiveScene().name == SceneTags.Intro)
+        if (SceneManager.GetActiveScene().name == SceneTags.IntroName)
         {
             SetTextValues();
             CheckToSetBossActive();
@@ -34,10 +34,15 @@ public class PointManager : MonoBehaviour
     private void SetTextValues()
     {
         costTextArray[0].setCostText(point.basicEnemyNumCost);
+
         costTextArray[1].setCostText(point.basicEnemyDamageCost);
+
         costTextArray[2].setCostText(point.basicEnemyMaxHealthCost);
+
         costTextArray[3].setCostText(point.bossEnemyNumCost);
+
         costTextArray[4].setCostText(point.bossEnemyDamageCost);
+
         costTextArray[5].setCostText(point.bossEnemyMaxHealthCost);
     }
 
@@ -80,7 +85,7 @@ public class PointManager : MonoBehaviour
 
     private void costCheck(ref int valueIncreased, int increase, ref int cost, int index)
     {
-        if (point.currentPoints > cost)
+        if (point.currentPoints >= cost)
         {
             Debug.Log($"Bought something");
             valueIncreased += increase;

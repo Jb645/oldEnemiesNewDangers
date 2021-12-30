@@ -27,6 +27,7 @@ public class SceneTags
 {
     public const string Game = "Scenes/Game";
     public const string Intro = "Scenes/Intro";
+    public const string IntroName = "Intro";
 }
 
 public class AnimationTags
