@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tags
+public static class Tags
 {
     public const string crosshair = "crosshair";
 }
 
-public class UpgradeTags
+public static class UpgradeTags
 {
     public const string basicEnemyNum = "basicEnemyNum";
 }
 
-public class ScriptableTags
+public static class ScriptableTags
 {
     public const string basicEnemyAddress = "Scriptables/BasicEnemy";
     public const string bossEnemyAddress = "Scriptables/BossEnemy";
@@ -23,14 +23,14 @@ public class ScriptableTags
     public static PointTracker pointTracker = (PointTracker)Resources.Load(pointAddress);
 }
 
-public class SceneTags
+public static class SceneTags
 {
     public const string Game = "Scenes/Game";
     public const string Intro = "Scenes/Intro";
     public const string IntroName = "Intro";
 }
 
-public class AnimationTags
+public static class AnimationTags
 {
     public const string Shoot = "Shoot";
 }

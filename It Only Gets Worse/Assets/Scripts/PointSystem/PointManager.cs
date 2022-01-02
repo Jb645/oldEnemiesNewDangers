@@ -122,7 +122,7 @@ public class PointManager : MonoBehaviour
 
     private void SetActiveBosses(int start, bool action)
     {
-        Debug.Log(action);
+        print(action);
         for (int i = start; i < costTextArray.Length; i++)
         {
             costTextArray[i].gameObject.SetActive(action);
